@@ -40,7 +40,7 @@ function Form({ navigation }) {
             });
 
             Alert.alert("Success", "Location added successfully!");
-            navigation.navigate('LocationListScreen'); // Navigoi takaisin listaan
+            navigation.navigate('My locations'); // Navigoi takaisin listaan
         } catch (error) {
             console.error("Error adding location: ", error);
             Alert.alert("Error", "Could not add location. Please try again.");

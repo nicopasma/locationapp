@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { Chip, IconButton, Text } from "react-native-paper";
+import { Chip, IconButton, Text, Button } from "react-native-paper";
 import { removeLocation } from "../firebase/Firestorecontroller";
 
 export default function LocationItem({ locationItem }) {
@@ -7,7 +7,7 @@ export default function LocationItem({ locationItem }) {
 
     return (
         <View style={styles.locationItem}>
-            <Text style={styles.chip}>{locationItem.name || "No name"}</Text>
+            <Button style={styles.chip}>{locationItem.name || "No name"}</Button>
             <Text style={styles.chip}>{locationItem.review || "No name"}</Text>
             <Text>{locationItem.stars ? `${locationItem.stars} ⭐` : "No rating"}</Text>
             <IconButton 
