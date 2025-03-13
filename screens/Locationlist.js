@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import { List, MD3LightTheme } from "react-native-paper";
 import { db, auth, LOCATIONS_REF } from "../firebase/config";
 import { collection, onSnapshot } from "firebase/firestore";
-import LocationItem from "../components/LocationItems"; // Varmista, että importti on oikein!
+import LocationItem from "../components/LocationItems"; // Make sure the import is correct
 
 export function LocationListScreen({ navigation }) {
     const [locations, setLocations] = useState([]);
@@ -22,8 +22,8 @@ export function LocationListScreen({ navigation }) {
             setLocations(locationsArray);
         });
 
-        return () => unsubscribe(); // Poistetaan kuuntelija, kun komponentti unmounttaa
-    }, []); // `[]` varmistaa, että effecti ajetaan vain kerran
+        return () => unsubscribe(); // Cleanup listener on component unmount
+    }, []);
 
     return (
         <ScrollView>
@@ -33,7 +33,11 @@ export function LocationListScreen({ navigation }) {
                 title={`Locations (${locations.length})`}
             >
                 {locations.map((location) => (
-                    <LocationItem key={location.id} locationItem={location} /> 
+                    <LocationItem 
+                        key={location.id} 
+                        locationItem={location} 
+                        navigation={navigation}  // Pass navigation here
+                    /> 
                 ))}
             </List.Accordion>
         </ScrollView>
