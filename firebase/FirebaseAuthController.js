@@ -13,7 +13,7 @@ const USERS_REF = "users";  // Varmistetaan, että tämä on oikea
 
 export function useFireAuth() {
     const [user, setUser] = useState();
-    const [todos, setTodos] = useState([]);
+    const [locations, setLocations] = useState([]);
 
     useEffect(() => {
         onAuthStateChanged(auth, user => {
@@ -23,10 +23,10 @@ export function useFireAuth() {
                 if (!user.uid) return; // Estetään tyhjä UID-virhe
 
                 const userDocRef = doc(db, USERS_REF, user.uid);
-                const subColRef = collection(userDocRef, "todos");
+                const subColRef = collection(userDocRef, "locations");
 
                 onSnapshot(subColRef, querySnapshot => {
-                    setTodos(querySnapshot.docs.map(doc => ({
+                    setLocations(querySnapshot.docs.map(doc => ({
                         id: doc.id, ...doc.data()
                     })));
                 });
@@ -34,7 +34,7 @@ export function useFireAuth() {
         });
     }, []);
 
-    return [user, todos];
+    return [user, locations];
 }
 
 export async function signUpUser(email, password, nickname) {

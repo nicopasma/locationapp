@@ -3,6 +3,8 @@ import { IconButton, PaperProvider } from 'react-native-paper';
 import { logoutUser, useFireAuth } from './firebase/FirebaseAuthController';
 import Login from './screens/Login';
 import MapScreen from './screens/Map';
+import { LocationListScreen } from './screens/Locationlist';
+import { AddLocation } from './screens/AddLocation';
 import { UserContext } from './contexts/UserContext';
 import { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -35,6 +37,8 @@ function Navigation() {
       >
         {/* Lisää navigointiin ainakin yksi screen */}
         <Drawer.Screen name="Map" component={MapScreen} />
+        <Drawer.Screen name="My locations" component={LocationListScreen} />
+        <Drawer.Screen name="Add new location" component={AddLocation} />
         {/* Voit lisätä lisää ruutuja tänne */}
       </Drawer.Navigator>
     </NavigationContainer>

@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 
-export const TODOS_REF = 'todos';
+export const LOCATIONS_REF = 'locations';
 export const USERS_REF = 'users';
 
 export const auth = initializeAuth(app,{
